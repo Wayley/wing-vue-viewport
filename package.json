@@ -1,0 +1,42 @@
+{
+  "name": "wing-vue-viewport",
+  "version": "0.0.1",
+  "description": "a utility tool for viewport on Vue3.0",
+  "main": "dist/wing-vue-viewport.es.js",
+  "module": "dist/wing-vue-viewport.es.js",
+  "unpkg": "dist/wing-vue-viewport.js",
+  "files": [
+    "dist",
+    "lib",
+    "es"
+  ],
+  "scripts": {
+    "build": "rollup --config"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wayley/wing-vue-viewport.git"
+  },
+  "keywords": [
+    "vue",
+    "vue3.0",
+    "viewport",
+    "window"
+  ],
+  "author": {
+    "name": "Robben Wadlay",
+    "email": "robbenwadlay@163.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Wayley/wing-vue-viewport/issues"
+  },
+  "homepage": "https://github.com/Wayley/wing-vue-viewport#readme",
+  "devDependencies": {
+    "rollup": "^2.34.2",
+    "rollup-plugin-terser": "^7.0.2"
+  },
+  "dependencies": {
+    "wing-viewport": "^0.0.1"
+  }
+}
