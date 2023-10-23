@@ -1,6 +1,6 @@
 {
   "name": "wing-vue-viewport",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "a utility tool for viewport on Vue3.0",
   "keywords": [
     "vue",
