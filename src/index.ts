@@ -3,7 +3,7 @@
  * @Date: 2023-10-23 10:26:44
  * @Description:
  * @LastEditors: Robben Wadlay
- * @LastEditTime: 2023-10-24 15:36:08
+ * @LastEditTime: 2023-10-24 17:26:41
  */
 
 import { ref, computed, type Ref, type ComputedRef } from 'vue';
@@ -15,6 +15,12 @@ const LARGE_WIDTH: number = 992;
 const EXTRA_LARGE_WIDTH: number = 1200;
 const EXTRA_EXTRA_LARGE_WIDTH: number = 1400;
 const REG_EXP: RegExp = /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i;
+
+function detectIsMobile(): boolean {
+  const userAgent: string = window.navigator.userAgent;
+  const matchResult: RegExpMatchArray | null = userAgent.match(REG_EXP);
+  return matchResult ? matchResult.length > 0 : false;
+}
 
 function getClientWidth(): number {
   const visualViewport: VisualViewport | null = window.visualViewport;
@@ -47,9 +53,7 @@ function windowRegisteResizeEvent(callback: Function) {
 
 export const useViewportWidthStore = function () {
   return defineStore('viewport', () => {
-    const userAgent: string = window.navigator.userAgent;
-    const matchResult: RegExpMatchArray | null = userAgent.match(REG_EXP);
-    const isMobile: Ref<boolean> = ref(matchResult ? matchResult.length > 0 : false);
+    const isMobile: Ref<boolean> = ref(detectIsMobile());
 
     const clientWidth: number = getClientWidth();
 
@@ -61,7 +65,10 @@ export const useViewportWidthStore = function () {
     const isExtraLargeViewPort: ComputedRef<boolean> = computed(() => width.value >= EXTRA_LARGE_WIDTH);
     const isExtraExtraLargeViewPort: ComputedRef<boolean> = computed(() => width.value >= EXTRA_EXTRA_LARGE_WIDTH);
 
-    windowRegisteResizeEvent(() => (width.value = getClientWidth()));
+    windowRegisteResizeEvent(() => {
+      width.value = getClientWidth();
+      isMobile.value = detectIsMobile();
+    });
 
     return {
       isMobile,
