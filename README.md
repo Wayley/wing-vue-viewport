@@ -4,12 +4,32 @@ a utility tool for viewport on Vue3.0
 
 ## Usage
 
+### v0.1.0(latest)
+
+```js
+
+import { useViewportWidthStore } from 'wing-vue-viewport'
+const viewportWidthStore = useViewportWidthStore()
+const { width, isMediumViewPort } = storeToRefs(viewportWidthStore)
+
+//
+<h1>{{width}}--{{ isMobile }}--{{ isMediumViewPort }}</h1>
+```
+
+### v0.0.2
+
 ```js
 import wingVueViewport from 'wing-vue-viewport';
 
 app.use(wingVueViewport);
 
-this.$viewport[MethodName];
+this.$viewport.isMobile();
+this.$viewport.isExtraSmallViewPort();
+this.$viewport.isMediumViewPort();
+this.$viewport.isSmallViewPort();
+this.$viewport.isLargeViewPort();
+this.$viewport.isExtraLargeViewPort();
+this.$viewport.isExtraExtraLargeViewPort();
 ```
 
 ## Methods
